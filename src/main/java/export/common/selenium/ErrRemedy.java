@@ -1,4 +1,4 @@
-package com.de.og.export.common.selenium;
+package export.common.selenium;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;

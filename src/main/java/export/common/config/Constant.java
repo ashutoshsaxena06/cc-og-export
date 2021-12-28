@@ -1,4 +1,4 @@
-package com.de.og.export.common.config;
+package export.common.config;
 
 public class Constant {
 

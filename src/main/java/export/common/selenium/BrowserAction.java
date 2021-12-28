@@ -1,4 +1,4 @@
-package com.de.og.export.common.selenium;
+package export.common.selenium;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;

@@ -1,4 +1,4 @@
-package com.de.og.export.common.selenium;
+package export.common.selenium;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DateUtil;

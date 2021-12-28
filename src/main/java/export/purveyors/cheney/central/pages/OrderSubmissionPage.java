@@ -1,4 +1,4 @@
-package com.de.og.export.purveyors.cheney.central.pages;
+package export.purveyors.cheney.central.pages;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;

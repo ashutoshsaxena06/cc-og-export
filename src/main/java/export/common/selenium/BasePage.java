@@ -1,4 +1,4 @@
-package com.de.og.export.common.selenium;
+package export.common.selenium;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -9,6 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
 import java.awt.datatransfer.Transferable;
@@ -20,7 +21,13 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 public abstract class BasePage {
-    public WebDriver driver;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
+
+    public BasePage(WebDriver driver){
+       this.driver = driver;
+    }
+
     public  static final String home = System.getProperty("user.home");
 
     private static final Logger logger = Logger.getLogger(BasePage.class);

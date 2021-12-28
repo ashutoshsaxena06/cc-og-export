@@ -1,6 +1,6 @@
-package com.de.og.export.common.api;
+package export.common.api;
 
-import com.de.og.export.common.config.Constant;
+import export.common.config.Constant;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.config.SSLConfig;

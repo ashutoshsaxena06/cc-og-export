@@ -1,12 +1,12 @@
-package com.de.og.export.executor;
+package executor;
 
-import com.de.og.export.common.selenium.ExcelFunctions;
-import com.de.og.export.common.selenium.RandomAction;
-import com.de.og.export.common.selenium.SendMailSSL;
-import com.de.og.export.process.CheneyCentralProcess;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+import export.common.selenium.ExcelFunctions;
+import export.common.selenium.RandomAction;
+import export.common.selenium.SendMailSSL;
+import export.process.CheneyCentralProcess;
 import org.apache.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TestCheneyCentralExecutor {
+public class TestCheneyCentralExecutor extends CheneyCentralProcess{
 
     static final int maxtry = 3;
     private final static Logger logger = Logger.getLogger(TestCheneyCentralExecutor.class);
@@ -44,12 +44,11 @@ public class TestCheneyCentralExecutor {
     public static String folderDate;
     public static String currList = "";
     public static String emailMessageExport = "";
-    public static String path = System.getProperty("user.home") + "\\Downloads\\chromecheneyCentralProcess.driver_win32\\chromecheneyCentralProcess.driver.exe";
+    public static String path = System.getProperty("user.home") + "\\Downloads\\chromedriver_win32\\chromedriver.exe";
     public static String project = "CheneyCentral";
     public static String extentReport = System.getProperty("user.dir") + File.separator + "extentsReport" + File.separator + "Report.html";
     public static ExtentReports er;
     public static ExtentTest et;
-    public static CheneyCentralProcess cheneyCentralProcess = new CheneyCentralProcess();
     static int retry = 0;
 
     @BeforeSuite
@@ -66,7 +65,7 @@ public class TestCheneyCentralExecutor {
         // to get the browser on which the UI test has to be performed.
         System.out.println("***********StartTest*********");
         RandomAction.deleteFiles(System.getProperty("user.home") + "\\Downloads");
-        cheneyCentralProcess.driver = RandomAction.openBrowser("Chrome", path);
+        driver = RandomAction.openBrowser("Chrome", path);
         logger.info("Invoked browser .. ");
     }
 
@@ -78,7 +77,7 @@ public class TestCheneyCentralExecutor {
         er.endTest(et);
         acno++;
         try {
-            cheneyCentralProcess.driver.quit();
+            driver.quit();
         } catch (Exception e) {
             System.out.println("already closed");
         }
@@ -148,10 +147,10 @@ public class TestCheneyCentralExecutor {
             logger.info("Closing file output stream object!");
             out.close();
         }
-        if (cheneyCentralProcess.driver != null) {
+        if (driver != null) {
             logger.info("Closing the browser!");
-            // TestCases.cheneyCentralProcess.driver.close();
-            cheneyCentralProcess.driver.quit();
+            // TestCases.driver.close();
+            driver.quit();
         }
 
         if (exportworkbook != null) {
@@ -198,7 +197,7 @@ public class TestCheneyCentralExecutor {
                 // if list is not empty
                 logger.info(restaurant_name + " for purveryor " + purveyor + " is Active !!");
                 et.log(LogStatus.INFO, restaurant_name + " and purveryor " + purveyor + " and listname is" + listname);
-                result = cheneyCentralProcess.process(username.trim(), password.trim());
+                result = process(username.trim(), password.trim());
                 if (result.equals(true)) {
                     emailMessageExport = "Pass";
                     exportstatus = "Pass";

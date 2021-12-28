@@ -1,4 +1,4 @@
-package com.de.og.export.common.selenium;
+package export.common.selenium;
 
 import java.io.File;
 import java.util.Properties;
@@ -18,7 +18,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import com.de.og.export.common.config.Constant;
+import export.common.config.Constant;
 import org.apache.log4j.Logger;
 
 public class SendMailSSL {

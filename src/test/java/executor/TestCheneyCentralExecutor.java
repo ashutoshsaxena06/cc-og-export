@@ -24,10 +24,10 @@ public class TestCheneyCentralExecutor extends CheneyCentralProcess{
     private final static Logger logger = Logger.getLogger(TestCheneyCentralExecutor.class);
     public static int rowIndex;
     public static String projectPath = System.getProperty("user.dir");
-    public static String inputFile = "C:\\Users\\Edge\\Desktop\\ExportEngineInput.xlsx";
+    public static String inputFile = System.getProperty("user.home") + "\\Desktop\\ExportEngineInput.xlsx";
     // projectPath + "\\config\\ExportEngineInput.xlsx";
     public static SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
-    public static String reportFile = "C:\\Users\\Edge\\Desktop\\Reports\\CheneyCentral_OG_report\\ExportSummary_Cheney_Central"
+    public static String reportFile =  System.getProperty("user.home") + "\\Desktop\\Reports\\CheneyCentral_OG_report\\ExportSummary_Cheney_Central"
             + new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
     // for Edge -
     // "C:\\Users\\Edge\\Desktop\\Reports\\CheneyOG_report\\ExportSummary_Cheney_" +

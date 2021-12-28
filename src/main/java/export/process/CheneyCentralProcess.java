@@ -20,9 +20,13 @@ public class CheneyCentralProcess {
             loginPage.invokeLogin();
             loginPage.doLogin(user, password);
             Thread.sleep(7000);
-            Assert.assertTrue(loginPage.isLoginSuccess());
-            homePage.goToOrderGuide();
-            orderGuideExportPage.exportExcel();
+            if(loginPage.isLoginSuccess()){
+                homePage.goToOrderGuide();
+                orderGuideExportPage.exportExcel();
+            }else {
+                logger.error("Failed at Login");
+                return false;
+            }
             return true;
         } catch (Exception e) {
             logger.error(e.getMessage());

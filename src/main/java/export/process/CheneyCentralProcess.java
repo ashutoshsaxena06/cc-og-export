@@ -19,6 +19,7 @@ public class CheneyCentralProcess {
         try {
             loginPage.invokeLogin();
             loginPage.doLogin(user, password);
+            Thread.sleep(7000);
             Assert.assertTrue(loginPage.isLoginSuccess());
             homePage.goToOrderGuide();
             orderGuideExportPage.exportExcel();

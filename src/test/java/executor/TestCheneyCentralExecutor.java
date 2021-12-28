@@ -72,7 +72,7 @@ public class TestCheneyCentralExecutor extends CheneyCentralProcess{
     @AfterMethod
     public static void writeExcel() throws IOException {
         logger.info("Running Excel write method!");
-        out = new FileOutputStream(new File(reportFile));
+        out = new FileOutputStream(reportFile);
         exportworkbook.write(out);
         er.endTest(et);
         acno++;
@@ -108,13 +108,14 @@ public class TestCheneyCentralExecutor extends CheneyCentralProcess{
     @AfterSuite
     public static void sendMailAndclose() {
         try {
-            er.flush();
-            er.close();
-
             String emailMsg = "Daily " + project + " OG Export Status: " + RandomAction.getDate();
 
             SendMailSSL.sendReports(emailMsg, reportFile);
             logger.info("Email Sent with Attachment");
+
+            er.flush();
+            er.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

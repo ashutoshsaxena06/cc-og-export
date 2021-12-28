@@ -514,13 +514,9 @@ public class SendMailSSL {
 
 	}
 
-	public static void sendReports(String Subject, String... filenames) {
+	public static void sendReports(String Subject, String filename) {
 		try {
-			// Properties Constant = new Properties();
-			// Constant.load(new FileInputStream("Config.properties"));
-			// String to = Constant.getProperty("reportTo");
-			// String user = Constant.getProperty("sendMailFrom");// change
-			// // accordingly
+
 			String user = Constant.sendMailFrom;
 			String[] to = Constant.reportTo;
 			String cc = Constant.cc;
@@ -554,13 +550,9 @@ public class SendMailSSL {
 			// 4) create new MimeBodyPart object and set DataHandler object to
 			// this object
 			MimeBodyPart messageBodyPart2 = new MimeBodyPart();
-			for (String filename : filenames) {
-				DataSource source = new FileDataSource("C:\\Users\\ImportOrder\\Log\\"+ filename);
-				messageBodyPart2.setDataHandler(new DataHandler(source));
-				messageBodyPart2.setFileName(filename);
-				logger.info("Attached file - " + filename);
-
-			}
+			DataSource source = new FileDataSource(filename);
+			messageBodyPart2.setDataHandler(new DataHandler(source));
+			messageBodyPart2.setFileName(filename);
 			Multipart multipart = new MimeMultipart();
 			multipart.addBodyPart(messageBodyPart2);
 
@@ -570,9 +562,6 @@ public class SendMailSSL {
 
 			logger.info("Message send success");
 
-		} catch (AddressException e) {
-			e.printStackTrace();
-			logger.info("Technical issue in sending reporting");
 		} catch (MessagingException e) {
 			e.printStackTrace();
 			logger.info("Technical issue in sending reporting");

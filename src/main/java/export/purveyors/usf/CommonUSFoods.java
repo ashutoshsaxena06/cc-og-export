@@ -87,7 +87,7 @@ public class CommonUSFoods {
     }
 
     public void setOptions(String OGName) {
-        WebElement Options = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'" + OGName
+        WebElement Options = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//table[@class='af_panelGroupLayout']//a[contains(.,'" + OGName
                 + "')]/ancestor::td[2]/following-sibling::td/..//a[starts-with(.,'Options')]")));
         CommonUSFoods.Options = Options;
     }

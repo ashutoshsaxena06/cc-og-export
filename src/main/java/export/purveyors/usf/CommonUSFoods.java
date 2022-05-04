@@ -79,10 +79,10 @@ public class CommonUSFoods {
     // List selection
     public void setOrderGuide(String OGName) {
         WebElement OrderGuide = wait
-                .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@id='r1:0:pt1:pt_pgl116']//td/..//a[contains(.,'" + OGName + "')]"))));
+                .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//table[@class='af_panelGroupLayout']//a[contains(.,'" + OGName + "')]"))));
         // By.xpath("//div[@class='x2ml dropDownMenu-UtilityMenu
         // x1a']/*/*/*/a[contains(.,'" + OGName + "')]"))); //
-        // div[@id='r1:0:pt1:pt_i3:0:pt_sfm1:pt_pgl44']
+        // div[@id='r1:0:pt1:pt_i3:0:pt_sfm1:pt_pgl44']ss
         CommonUSFoods.OrderGuide = OrderGuide;
     }
 

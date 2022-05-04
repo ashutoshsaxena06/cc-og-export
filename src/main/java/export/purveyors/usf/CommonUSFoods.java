@@ -15,8 +15,6 @@ import java.util.concurrent.TimeUnit;
 
 public class CommonUSFoods {
     static final int maxtry = 3;
-    public static WebElement OrderGuide;
-    public static WebElement Options;
     public static WebDriverWait wait;
     public static String url = "https://www3.usfoods.com/order/faces/oracle/webcenter/portalapp/pages/login.jspx";
     public static CommonUSFoods com;
@@ -77,19 +75,17 @@ public class CommonUSFoods {
     }
 
     // List selection
-    public void setOrderGuide(String OGName) {
-        WebElement OrderGuide = wait
-                .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//table[@class='af_panelGroupLayout']//a[contains(.,'" + OGName + "')]"))));
+    public WebElement setOrderGuide(String OGName) {
+        return wait
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//table[@class='af_panelGroupLayout']//a[contains(.,'" + OGName + "')]")));
         // By.xpath("//div[@class='x2ml dropDownMenu-UtilityMenu
         // x1a']/*/*/*/a[contains(.,'" + OGName + "')]"))); //
         // div[@id='r1:0:pt1:pt_i3:0:pt_sfm1:pt_pgl44']ss
-        CommonUSFoods.OrderGuide = OrderGuide;
     }
 
-    public void setOptions(String OGName) {
-        WebElement Options = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//table[@class='af_panelGroupLayout']//a[contains(.,'" + OGName
+    public WebElement setOptions(String OGName) {
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//table[@class='af_panelGroupLayout']//a[contains(.,'" + OGName
                 + "')]/ancestor::td[2]/following-sibling::td/..//a[starts-with(.,'Options')]")));
-        CommonUSFoods.Options = Options;
     }
 
     public Boolean startUSF(String listname, String account, String username, String password)
@@ -179,12 +175,12 @@ public class CommonUSFoods {
             Actions act = new Actions(driver);
             driver.get(listUrl);
             System.out.println("On View Lists page");
-            com.setOrderGuide(listname);
+            WebElement orderGuide = com.setOrderGuide(listname);
             JavascriptExecutor je = (JavascriptExecutor) driver;
-            je.executeScript("arguments[0].scrollIntoView(true);", OrderGuide);
-            OrderGuide.click();
-            setOptions(listname);
-            Options.click();
+            je.executeScript("arguments[0].scrollIntoView(true);", orderGuide);
+            orderGuide.click();
+            WebElement options = setOptions(listname);
+            options.click();
             Thread.sleep(2000);
             com.lnk_Download.click();
             System.out.println("Order Guide name found on list download page");

@@ -18,15 +18,13 @@ public class BaseExecutor {
     public static final String currDir = System.getProperty("user.dir");
     public static final String projectPath = currDir;
     public static final String inputFile = userHome + "/Desktop/ExportEngineInput.xlsx";
-    public static final String chromePath = userHome + "/Downloads/chromedriver_win32/chromedriver";
+    public static final String chromePath = userHome + "/Downloads/chromedriver_win32/chromedriver.exe";
     public static final String extentReport = currDir + File.separator + "extentsReport" + File.separator + "Report.html";
     private final static Logger logger = Logger.getLogger(BaseExecutor.class);
     public static int rowIndex;
     // projectPath + "/config/ExportEngineInput.xlsx";
     public static SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
-    public static String reportFile = userHome + "/Desktop/Reports/CheneyCentral_OG_report/ExportSummary_Cheney_Central"
-            + new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
-    // for Edge -
+  // for Edge -
     // "C:/Users/Edge/Desktop/Reports/CheneyOG_report/ExportSummary_Cheney_" +
     // PageAction.getDate().toString().replace(" ", "_");
     // + new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";

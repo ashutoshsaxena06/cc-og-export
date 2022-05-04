@@ -21,6 +21,8 @@ import java.util.Date;
 
 public class TestCheneyCentralExecutor extends BaseExecutor {
     private final static Logger logger = Logger.getLogger(TestCheneyCentralExecutor.class);
+    public static String reportFile = userHome + "/Desktop/Reports/CheneyCentral_OG_report/ExportSummary_Cheney_Central"
+            + new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
     PurveyorAction purveyorAction = new CheneyCentralAction();
 
     public static String project = "CheneyCentral";

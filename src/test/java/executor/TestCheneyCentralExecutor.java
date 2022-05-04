@@ -3,10 +3,11 @@ package executor;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+import export.actions.PurveyorAction;
 import export.common.selenium.ExcelFunctions;
 import export.common.selenium.RandomAction;
 import export.common.selenium.SendMailSSL;
-import export.process.CheneyCentralProcess;
+import export.actions.CheneyCentralAction;
 import org.apache.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -18,38 +19,11 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TestCheneyCentralExecutor extends CheneyCentralProcess{
-
-    static final int maxtry = 3;
+public class TestCheneyCentralExecutor extends BaseExecutor {
     private final static Logger logger = Logger.getLogger(TestCheneyCentralExecutor.class);
-    public static int rowIndex;
-    public static String projectPath = System.getProperty("user.dir");
-    public static String inputFile = System.getProperty("user.home") + "\\Desktop\\ExportEngineInput.xlsx";
-    // projectPath + "\\config\\ExportEngineInput.xlsx";
-    public static SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
-    public static String reportFile =  System.getProperty("user.home") + "\\Desktop\\Reports\\CheneyCentral_OG_report\\ExportSummary_Cheney_Central"
-            + new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
-    // for Edge -
-    // "C:\\Users\\Edge\\Desktop\\Reports\\CheneyOG_report\\ExportSummary_Cheney_" +
-    // PageAction.getDate().toString().replace(" ", "_");
-    // + new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
-    // projectPath+ "\\Output_Summary\\ExportSummary_Cheney_" + new
-    // Date().toString().replace(":", "").replace(" ", "")+".xlsx";
-    public static int acno;
-    public static XSSFWorkbook exportworkbook;
-    public static XSSFSheet inputsheet;
-    public static int AcColStatus, AcColdetail;
-    public static FileOutputStream out;
-    public static int totalNoOfRows;
-    public static String folderDate;
-    public static String currList = "";
-    public static String emailMessageExport = "";
-    public static String path = System.getProperty("user.home") + "\\Downloads\\chromedriver_win32\\chromedriver.exe";
+    PurveyorAction purveyorAction = new CheneyCentralAction();
+
     public static String project = "CheneyCentral";
-    public static String extentReport = System.getProperty("user.dir") + File.separator + "extentsReport" + File.separator + "Report.html";
-    public static ExtentReports er;
-    public static ExtentTest et;
-    static int retry = 0;
 
     @BeforeSuite
     public static void set() throws IOException {
@@ -65,7 +39,7 @@ public class TestCheneyCentralExecutor extends CheneyCentralProcess{
         // to get the browser on which the UI test has to be performed.
         System.out.println("***********StartTest*********");
         RandomAction.deleteFiles(System.getProperty("user.home") + "\\Downloads");
-        driver = RandomAction.openBrowser("Chrome", path);
+        driver = RandomAction.openBrowser("Chrome", chromePath);
         logger.info("Invoked browser .. ");
     }
 
@@ -198,7 +172,7 @@ public class TestCheneyCentralExecutor extends CheneyCentralProcess{
                 // if list is not empty
                 logger.info(restaurant_name + " for purveryor " + purveyor + " is Active !!");
                 et.log(LogStatus.INFO, restaurant_name + " and purveryor " + purveyor + " and listname is" + listname);
-                result = process(username.trim(), password.trim());
+                result = purveyorAction.process(driver, username.trim(), password.trim());
                 if (result.equals(true)) {
                     emailMessageExport = "Pass";
                     exportstatus = "Pass";

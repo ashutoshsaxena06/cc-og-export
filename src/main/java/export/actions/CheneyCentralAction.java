@@ -1,18 +1,16 @@
-package export.process;
+package export.actions;
 
 import export.purveyors.cheney.central.pages.HomePage;
 import export.purveyors.cheney.central.pages.LoginPage;
 import export.purveyors.cheney.central.pages.OrderGuideExportPage;
 import org.apache.log4j.Logger;
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
-public class CheneyCentralProcess {
-    private static final Logger logger = Logger.getLogger(CheneyCentralProcess.class);
+public class CheneyCentralAction implements PurveyorAction {
+    private static final Logger logger = Logger.getLogger(CheneyCentralAction.class);
 
-    public static WebDriver driver;
-
-    public boolean process(String user, String password) {
+    @Override
+    public boolean process(WebDriver driver, String user, String password) {
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
         OrderGuideExportPage orderGuideExportPage = new OrderGuideExportPage(driver);
@@ -20,10 +18,10 @@ public class CheneyCentralProcess {
             loginPage.invokeLogin();
             loginPage.doLogin(user, password);
             Thread.sleep(7000);
-            if(loginPage.isLoginSuccess()){
+            if (loginPage.isLoginSuccess()) {
                 homePage.goToOrderGuide();
                 orderGuideExportPage.exportExcel();
-            }else {
+            } else {
                 logger.error("Failed at Login");
                 return false;
             }
@@ -32,5 +30,10 @@ public class CheneyCentralProcess {
             logger.error(e.getMessage());
             return false;
         }
+    }
+
+    @Override
+    public boolean process(WebDriver driver, String listname, String account, String username, String password) {
+        throw new UnsupportedOperationException();
     }
 }

@@ -177,13 +177,11 @@ public class CommonUSFoods {
             driver.get(listUrl);
             System.out.println("On View Lists page");
             WebElement orderGuide = com.setOrderGuide(listname);
-            JavascriptExecutor je = (JavascriptExecutor) driver;
-            je.executeScript("arguments[0].scrollIntoView(true);", orderGuide);
+            jsScrollIntoView(orderGuide);
             Thread.sleep(200);
-            JavascriptExecutor executor = (JavascriptExecutor)driver;
-            executor.executeScript("arguments[0].click();", orderGuide);
-            WebElement options = setOptions(listname);
-            options.click();
+            jsClick(orderGuide);
+//            WebElement options = setOptions(listname);
+//            options.click();
             Thread.sleep(2000);
             com.lnk_Download.click();
             System.out.println("Order Guide name found on list download page");
@@ -191,6 +189,16 @@ public class CommonUSFoods {
             System.out.println("Order guide select failed");
             e.printStackTrace();
         }
+    }
+
+    public void jsClick(WebElement ele) {
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].click();", ele);
+    }
+
+    public void jsScrollIntoView(WebElement ele) {
+        JavascriptExecutor je = (JavascriptExecutor) driver;
+        je.executeScript("arguments[0].scrollIntoView(true);", ele);
     }
 
     public void downloadFile(String filename) {

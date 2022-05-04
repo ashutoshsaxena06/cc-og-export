@@ -182,6 +182,7 @@ public class CommonUSFoods {
             com.setOrderGuide(listname);
             JavascriptExecutor je = (JavascriptExecutor) driver;
             je.executeScript("arguments[0].scrollIntoView(true);", OrderGuide);
+            OrderGuide.click();
             setOptions(listname);
             Options.click();
             Thread.sleep(2000);

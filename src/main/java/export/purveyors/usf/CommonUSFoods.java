@@ -76,8 +76,9 @@ public class CommonUSFoods {
 
     // List selection
     public WebElement setOrderGuide(String OGName) {
+        // "//table[@class='af_panelGroupLayout']//a[contains(.,'" + OGName + "')]"
         return wait
-                .until(ExpectedConditions.elementToBeClickable(By.xpath("//table[@class='af_panelGroupLayout']//a[contains(.,'" + OGName + "')]")));
+                .until(ExpectedConditions.elementToBeClickable(By.linkText(OGName)));
         // By.xpath("//div[@class='x2ml dropDownMenu-UtilityMenu
         // x1a']/*/*/*/a[contains(.,'" + OGName + "')]"))); //
         // div[@id='r1:0:pt1:pt_i3:0:pt_sfm1:pt_pgl44']ss

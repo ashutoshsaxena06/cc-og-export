@@ -180,7 +180,8 @@ public class CommonUSFoods {
             JavascriptExecutor je = (JavascriptExecutor) driver;
             je.executeScript("arguments[0].scrollIntoView(true);", orderGuide);
             Thread.sleep(200);
-            orderGuide.click();
+            JavascriptExecutor executor = (JavascriptExecutor)driver;
+            executor.executeScript("arguments[0].click();", orderGuide);
             WebElement options = setOptions(listname);
             options.click();
             Thread.sleep(2000);

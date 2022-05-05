@@ -49,10 +49,10 @@ public class CommonUSFoods {
     WebElement li_Accounts;
     // Download pop-up
     // FileName
-    @FindBy(xpath = "//table[@class='poNumber af_inputText']//input")
+    @FindBy(xpath = "//input[@id='r1:0:pt1:r5:0:it1::content']")
     WebElement txt_FileName;
     // Format
-    @FindBy(xpath = "//table[@class='fieldLabelSOC af_panelLabelAndMessage']//span/div/div/div")
+    @FindBy(xpath = "//span[@id='r1:0:pt1:r5:0:soc4']/div/div/div")
     WebElement txt_Format;
     // Format
     @FindBy(xpath = ".//*[@id='r1:0:pt1:r5:0:soc4']/..//div/a")

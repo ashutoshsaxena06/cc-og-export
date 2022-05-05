@@ -36,7 +36,7 @@ public class CommonUSFoods {
     @FindBy(xpath = ".//*[@id='dgfSPT:pt_i3:0:pt_sfm1:pt_cil7']")
     WebElement li_ListIcon;
     // download
-    @FindBy(xpath = "//form[@id='f1']/..//a[@id='r1:0:pt1:cil4']")
+    @FindBy(xpath = "//span[contains(text(),'DOWNLOAD')]")
     WebElement lnk_Download;
     // Download icon
     @FindBy(xpath = "//td/*[@id='r1:0:pt1:cil15']/img")
@@ -49,22 +49,22 @@ public class CommonUSFoods {
     WebElement li_Accounts;
     // Download pop-up
     // FileName
-    @FindBy(xpath = ".//*[@id='r1:0:pt1:r3:0:it1::content']")
+    @FindBy(xpath = "//table[@class='poNumber af_inputText']//input")
     WebElement txt_FileName;
     // Format
-    @FindBy(xpath = ".//*[@id='r1:0:pt1:r3:0:soc4']/div")
+    @FindBy(xpath = "//table[@class='fieldLabelSOC af_panelLabelAndMessage']//span/div/div/div")
     WebElement txt_Format;
     // Format
-    @FindBy(xpath = ".//*[@id='r1:0:pt1:r3:0:soc4']/..//div/a")
+    @FindBy(xpath = ".//*[@id='r1:0:pt1:r5:0:soc4']/..//div/a")
     WebElement lnk_FormatSelectIcon;
     // Download button
-    @FindBy(xpath = ".//*[@id='r1:0:pt1:r3:0:cb3']")
+    @FindBy(xpath = ".//*[@id='r1:0:pt1:r5:0:cb3']")
     WebElement btn_download;
     // format to CSV
-    @FindBy(xpath = ".//*[@id='r1:0:pt1:r3:0:soc4']/..//div/ul/li/a[text()='PDF']")
+    @FindBy(xpath = ".//*[@id='r1:0:pt1:r5:0:soc4']/..//div/ul/li/a[text()='PDF']")
     WebElement lnk_FormatSelectPDF;
     // format to CSV
-    @FindBy(id = "r1:0:pt1:pt_cl21")
+    @FindBy(xpath = "//span[contains(text(),'Sign Out')]")
     WebElement btn_SignOut;
     public CommonUSFoods(WebDriver driver) {
         CommonUSFoods.driver = driver;

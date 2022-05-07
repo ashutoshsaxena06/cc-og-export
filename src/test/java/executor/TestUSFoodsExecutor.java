@@ -53,7 +53,7 @@ public class TestUSFoodsExecutor extends BaseExecutor {
     public static void setUp() throws IOException {
         // to get the browser on which the UI test has to be performed.
         System.out.println("***********StartTest*********");
-//        RandomAction.deleteFiles("C:\\Users\\Edge\\Downloads");
+        RandomAction.deleteFiles("C:\\Users\\Edge\\Downloads");
         driver = RandomAction.openBrowser("Chrome", chromePath);
         System.out.println("Invoked browser .. ");
     }

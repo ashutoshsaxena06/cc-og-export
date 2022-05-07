@@ -19,8 +19,8 @@ public class CommonUSFoods {
     public static String url = "https://www3.usfoods.com/order/faces/oracle/webcenter/portalapp/pages/login.jspx";
     public static CommonUSFoods com;
     public static String listUrl = "https://www3.usfoods.com/order/faces/oracle/webcenter/portalapp/pages/lists/myLists.jspx?";
-    static int retry = 0;
     public static WebDriver driver;
+    static int retry = 0;
     @FindBy(xpath = ".//*[@id='it9::content']")
     WebElement txt_UserName;
     // password
@@ -66,6 +66,7 @@ public class CommonUSFoods {
     // format to CSV
     @FindBy(xpath = "//span[contains(text(),'Sign Out')]")
     WebElement btn_SignOut;
+
     public CommonUSFoods(WebDriver driver) {
         CommonUSFoods.driver = driver;
     }
@@ -76,12 +77,9 @@ public class CommonUSFoods {
 
     // List selection
     public WebElement setOrderGuide(String OGName) {
-        // "//table[@class='af_panelGroupLayout']//a[contains(.,'" + OGName + "')]"
+        By ogLocator = (OGName.toLowerCase().contains("order guide (#")) ? By.partialLinkText(OGName) : By.linkText(OGName);
         return wait
-                .until(ExpectedConditions.elementToBeClickable(By.linkText(OGName)));
-        // By.xpath("//div[@class='x2ml dropDownMenu-UtilityMenu
-        // x1a']/*/*/*/a[contains(.,'" + OGName + "')]"))); //
-        // div[@id='r1:0:pt1:pt_i3:0:pt_sfm1:pt_pgl44']ss
+                .until(ExpectedConditions.elementToBeClickable(ogLocator));
     }
 
     public WebElement setOptions(String OGName) {
@@ -192,7 +190,7 @@ public class CommonUSFoods {
     }
 
     public void jsClick(WebElement ele) {
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", ele);
     }
 

@@ -172,6 +172,7 @@ public class CommonUSFoods {
 //		wait = new WebDriverWait(driver, 30);
         try {
             Actions act = new Actions(driver);
+            Thread.sleep(3000);
             driver.get(listUrl);
             System.out.println("On View Lists page");
             WebElement orderGuide = com.setOrderGuide(listname);

@@ -181,7 +181,8 @@ public class CommonUSFoods {
 //            WebElement options = setOptions(listname);
 //            options.click();
             Thread.sleep(2000);
-            com.lnk_Download.click();
+            jsScrollIntoView(com.lnk_Download);
+            jsClick(com.lnk_Download);
             System.out.println("Order Guide name found on list download page");
         } catch (Exception e) {
             System.out.println("Order guide select failed");

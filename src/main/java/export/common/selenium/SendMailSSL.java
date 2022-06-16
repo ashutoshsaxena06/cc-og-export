@@ -21,8 +21,8 @@ import javax.mail.internet.MimeMultipart;
 import export.common.config.Constant;
 import org.apache.log4j.Logger;
 
-import static com.framework.commonUtils.Constant.GmailPassword;
-import static com.framework.commonUtils.Constant.GmailUser;
+import static export.common.config.Constant.GmailPassword;
+import static export.common.config.Constant.GmailUser;
 
 public class SendMailSSL {
 	private final static Logger logger = Logger.getLogger(SendMailSSL.class);

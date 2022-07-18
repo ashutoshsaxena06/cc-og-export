@@ -22,7 +22,7 @@ public class TestUSFoodsExecutor extends BaseExecutor {
     private final static Logger logger = Logger.getLogger(TestUSFoodsExecutor.class);
     public static String reportFile = userHome + "/Desktop/Reports/USF_OG_report/ExportSummary_USF"
             + new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
-    public static String project = "USF";
+    private static final String project = "USF";
     PurveyorAction purveyorAction = new UsFoodsAction();
 
     @BeforeTest

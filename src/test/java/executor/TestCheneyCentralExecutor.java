@@ -25,7 +25,7 @@ public class TestCheneyCentralExecutor extends BaseExecutor {
             + new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
     PurveyorAction purveyorAction = new CheneyCentralAction();
 
-    public static String project = "CheneyCentral";
+    private static final String project = "CheneyCentral";
 
     @BeforeSuite
     public static void set() throws IOException {
@@ -40,7 +40,7 @@ public class TestCheneyCentralExecutor extends BaseExecutor {
     public static void setUp() throws IOException {
         // to get the browser on which the UI test has to be performed.
         System.out.println("***********StartTest*********");
-        RandomAction.deleteFiles(System.getProperty("user.home") + "\\Downloads");
+//        RandomAction.deleteFiles(System.getProperty("user.home") + "\\Downloads");
         driver = RandomAction.openBrowser("Chrome", chromePath);
         logger.info("Invoked browser .. ");
     }

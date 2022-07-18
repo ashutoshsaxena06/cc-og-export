@@ -21,6 +21,9 @@ import javax.mail.internet.MimeMultipart;
 import export.common.config.Constant;
 import org.apache.log4j.Logger;
 
+import static export.common.config.Constant.GmailPassword;
+import static export.common.config.Constant.GmailUser;
+
 public class SendMailSSL {
 	private final static Logger logger = Logger.getLogger(SendMailSSL.class);
 
@@ -39,8 +42,8 @@ public class SendMailSSL {
 
 		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("onlineweekend.diningedge@gmail.com", "edge2016");// change
-				// accordingly
+                	return new PasswordAuthentication(GmailUser, GmailPassword);// change
+					// accordingly
 			}
 		});
 		return session;

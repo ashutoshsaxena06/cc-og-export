@@ -2,11 +2,11 @@ package export.common.config;
 
 public class Constant {
 
-    public static final String GmailURL = "smtp.gmail.com";
+	public static final String GmailURL = "smtp.gmail.com";
 
-    public static final String GmailUser = "onlineweekend.diningedge";
+	public static final String GmailUser = "onlineweekend.diningedge@gmail.com";
 
-    public static final String GmailPassword = "edge2016";
+	public static final String GmailPassword = "hhnhelidtuzcsdgh";
 
     public static final String Path_TestData = "C://Users//ashsaxen//Downloads//esave";
 

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ParentPage extends BasePage {
 
-    private static final int TIMEOUT = 5;
+    private static final int TIMEOUT = 20;
     private static final int POLLING = 100;
 
     public ParentPage(WebDriver driver) {

@@ -17,6 +17,7 @@ public class LoginPage extends ParentPage {
         waitForElementToAppear(inp_username).sendKeys(user);
         waitForElementToAppear(inp_password).sendKeys(pwd);
         waitForElementToAppear(btn_login).click();
+        System.out.println("entered username and password");
     }
 
     public void invokeLogin() {

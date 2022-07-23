@@ -23,7 +23,7 @@ public class TestCheneyCentralExecutor extends BaseExecutor {
     private final static Logger logger = Logger.getLogger(TestCheneyCentralExecutor.class);
     public static String reportFile = userHome + "/Desktop/Reports/CheneyCentral_OG_report/ExportSummary_Cheney_Central"
             + new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
-    PurveyorAction purveyorAction = new CheneyCentralAction();
+    private final PurveyorAction purveyorAction = new CheneyCentralAction();
 
     private static final String project = "CheneyCentral";
 
@@ -40,7 +40,7 @@ public class TestCheneyCentralExecutor extends BaseExecutor {
     public static void setUp() throws IOException {
         // to get the browser on which the UI test has to be performed.
         System.out.println("***********StartTest*********");
-//        RandomAction.deleteFiles(System.getProperty("user.home") + "\\Downloads");
+        RandomAction.deleteFiles(System.getProperty("user.home") + "\\Downloads");
         driver = RandomAction.openBrowser("Chrome", chromePath);
         logger.info("Invoked browser .. ");
     }

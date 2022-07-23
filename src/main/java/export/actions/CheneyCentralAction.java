@@ -17,7 +17,7 @@ public class CheneyCentralAction implements PurveyorAction {
         try {
             loginPage.invokeLogin();
             loginPage.doLogin(user, password);
-            Thread.sleep(7000);
+            Thread.sleep(20000);
             if (loginPage.isLoginSuccess()) {
                 homePage.goToOrderGuide();
                 orderGuideExportPage.exportExcel();
